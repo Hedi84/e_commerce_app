@@ -1,0 +1,25 @@
+<% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+
+<%= link_to "Add a new item to the shop", new_item_path %>
+<% if @basket_id %>
+  <%= link_to "Check your basket", basket_path(@basket_id) %>
+<%end%>
+
+
+<div class='container'>
+  <% @items.each do |item| %>
+    <div class="card" style="width: 18rem; margin-top:2%;">
+      <img src= "https://cdn4.iconfinder.com/data/icons/for-your-interface-free-samples/128/Label-256.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%=item.name%></h5>
+        <p class="card-text"><%=item.description.truncate(27)%></p>
+        <p class="card-text"><%="£#{item.price}"%></p>
+        <%= link_to "check out #{item.name}", item_path(item) %>
+      </div>
+    </div>
+  <%end%>

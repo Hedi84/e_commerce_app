@@ -27,7 +27,7 @@ class CartItemsController < ApplicationController
 
     def cart_id
         @cart ||=
-            Cart.where(user_id: current_user.id).first&.id || Cart.create(user_id: current_user.id, checkout_id: checkout.id).id
+            Cart.where(user_id: current_user.id).first&.id || Cart.create(user_id: current_user.id, checkout: checkout).id
     end
 
     def checkout
