@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-    before_action :find_item, only: [:show, :edit, :update, :delete]
+    before_action :find_item, only: [:show]
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
@@ -10,38 +10,14 @@ class ItemsController < ApplicationController
     def show
     end
 
-    def new
-        @item = Item.new
-    end
-
-    def create
-        @item = Item.create(item_params)
-        redirect_to item_path(@item.id)
-    end
-
-    def delete
-        @item.delete
-    end
-
-    def edit
-    end
-
-    def update
-        @item.update(item_params)
-        redirect_to item_path(@item.id)
-    end
-
     private
 
     def find_item
         @item ||= Item.find(params[:id])
     end
 
-    def item_params
-        params.require(:item).permit(:name, :price, :description)
-    end
-
     def cart_id
-        @cart_id ||= Cart.where(user_id: current_user&.id).last
+        # for simplicity's sake always user a user's latest active cart
+        @cart_id ||= Cart.where(user_id: current_user&.id, active: true).last
     end
 end

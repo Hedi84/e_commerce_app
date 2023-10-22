@@ -25,13 +25,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_135854) do
     t.decimal "total_price", precision: 5, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active"
+    t.boolean "active", default: true
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "checkouts", force: :cascade do |t|
     t.integer "cart_id", null: false
-    t.boolean "paid"
+    t.boolean "paid", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_checkouts_on_cart_id"

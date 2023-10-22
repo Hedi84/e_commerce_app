@@ -7,16 +7,15 @@ Rails.application.routes.draw do
   root "items#index"
 
   # items
-  resources :items
+  resources :items, only: [:index, :show]
 
   # carts
-  resources :carts
+  resources :carts, only: [:show]
 
   # checkouts
-  resources :checkouts, only: [:show, :destroy]
+  resources :checkouts, only: [:show, :update]
 
   # cart_items
-  resources :cart_items, except: [:create, :destroy, :show]
   post "/cart_items/:item_id", to: "cart_items#create", as: "add_to_cart"
   delete "cart_items/:id", to: "cart_items#destroy", as: "remove_cart_item"
 end

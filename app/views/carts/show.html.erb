@@ -8,5 +8,5 @@
 <% end %>
     <p><%="Current total(without any calculated discounts) - £ #{@cart.total} "%></p>
 </ul>
-<%= link_to "go back", items_path %>
+<%= link_to "go back", root_path %>
 <%= link_to "Continue to checkout", checkout_path(@cart.checkout.id) %>
