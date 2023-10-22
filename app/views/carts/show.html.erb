@@ -8,7 +8,7 @@
           <%= button_to "Remove from cart", remove_cart_item_path(cart_item), method: :delete %>
         </li>
     <% end %>
-    <p><%="Current total(without any calculated discounts) - £ #{@cart.total} "%></p>
+    <p><%="Current total - £ #{@cart.total} "%></p>
   </ul>
   <%= link_to "go back", root_path %>
   <%= link_to "Continue to checkout", checkout_path(@checkout) %>
