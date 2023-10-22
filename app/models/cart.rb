@@ -1,7 +1,12 @@
+# frozen_string_literal: true
+
+# carts
+# user_id     :     integer
+# active      :     boolean
 class Cart < ApplicationRecord
   belongs_to :user
-  has_many :cart_items
-  has_one :checkout
+  has_many :cart_items, dependent: :destroy
+  has_one :checkout, dependent: :destroy
 
   def total
     total_price = 0
