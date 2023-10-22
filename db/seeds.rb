@@ -6,3 +6,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts 'Creating test items'
+Item.create(name: 'Converse Sneakers', description: 'Original Converse Sneakers in Black', price: 49.95)
+Item.create(name: 'Ballet Flats', description: 'Rose Gold Ballet Flats', price: 29.99)
+Item.create(name: 'Dr Martens', description: 'Classic Black Dr Martens boots', price: 65)
+Item.create(name: 'Nike Running Trainers', description: 'Cushioned Running Shoes by Nike', price: 94.99)
+puts 'Finished'

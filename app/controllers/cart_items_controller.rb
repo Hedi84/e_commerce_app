@@ -4,15 +4,12 @@ class CartItemsController < ApplicationController
     def create
         @cart_item = CartItem.new(item_id: item_id, cart_id: cart_id)
         @cart_item.save
-        redirect_to cart_path(cart_id)
-    end
-
-    def show
+        redirect_to cart_path(@cart_item.cart)
     end
 
     def destroy
         @cart_item.delete
-        redirect_to cart_path(cart_id)
+        redirect_to root_path
     end
 
     private

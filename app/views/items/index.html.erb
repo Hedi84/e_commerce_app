@@ -5,9 +5,8 @@
   <%= button_to "Sign in", new_user_session_path %> 
 <% end %>
 
-<%= link_to "Add a new item to the shop", new_item_path %>
-<% if @basket_id %>
-  <%= link_to "Check your basket", basket_path(@basket_id) %>
+<% if @cart_id %>
+  <%= link_to "Check your cart", cart_path(@cart_id) %>
 <%end%>
 
 

@@ -4,4 +4,3 @@
 <p> <%="Price: £#{@item.price}"%> </p>
 <%= button_to "Add to cart", add_to_cart_path(@item.id), data: { 'turbo-method' => :post } %>
 <%= link_to "go back", items_path %>
-<%= link_to "Edit this item", edit_item_path(@item.id) %>
