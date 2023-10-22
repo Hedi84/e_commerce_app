@@ -4,6 +4,8 @@
 # user_id     :     integer
 # active      :     boolean
 class Cart < ApplicationRecord
+  validates :user, presence: true
+
   belongs_to :user
   has_many :cart_items, dependent: :destroy
   has_one :checkout, dependent: :destroy
