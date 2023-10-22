@@ -1,12 +1,15 @@
-<ul>
-<% @cart_items.each do |cart_item| %>
-    <% i = cart_item.item %>
-    <li>
-        <%="#{i.name}  :      £ #{i.price}"%> 
-        <%= button_to "Remove from cart", remove_cart_item_path(cart_item.id), method: :delete %>
-    </li>
-<% end %>
-    <p><%="Current total(without any calculated discounts) - £ #{@cart.total} "%></p>
-</ul>
-<%= link_to "go back", root_path %>
-<%= link_to "Continue to checkout", checkout_path(@cart.checkout.id) %>
+<div style='margin-left:2%'>
+<h2> Cart </h2>
+    <ul>
+    <% @cart_items.each do |cart_item| %>
+        <% i = cart_item.item %>
+        <li>
+            <%="#{i.name}  :      £ #{i.price}"%> 
+            <%= button_to "Remove from cart", remove_cart_item_path(cart_item), method: :delete %>
+        </li>
+    <% end %>
+        <p><%="Current total(without any calculated discounts) - £ #{@cart.total} "%></p>
+    </ul>
+    <%= link_to "go back", root_path %>
+    <%= link_to "Continue to checkout", checkout_path(@checkout) %>
+</div>

@@ -6,11 +6,14 @@ class CheckoutsController < ApplicationController
     end
 
     def update
+    # paying and checking out updates both checkout and cart
       @checkout.paid = true
       cart.active = false
       if @checkout.save && cart.save
+        flash[:notice] = 'Thank you for your purchase'
         redirect_to root_path
       else
+        flash[:error] = 'Something went wrong, please contact an admin'
         render checkout_path(@checkout)
       end
     end

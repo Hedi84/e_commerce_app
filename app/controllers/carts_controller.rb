@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
+    before_action :find_cart, :find_checkout
+
     def show
-       find_cart
        cart_items
     end
 
@@ -12,5 +13,10 @@ class CartsController < ApplicationController
 
     def cart_items
         @cart_items ||= @cart.cart_items
+    end
+
+    def find_checkout
+        # finds the corresponding checkout or creates a new one
+        @checkout ||= Checkout.find_or_create_by(cart_id: @cart.id)
     end
 end
