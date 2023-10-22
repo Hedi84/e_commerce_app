@@ -24,7 +24,7 @@ class CartItemsController < ApplicationController
   end
 
   def find_cart_item
-    CartItem.find(params[:id])
+    @cart_item ||= CartItem.find(params[:id])
   end
 
   def cart

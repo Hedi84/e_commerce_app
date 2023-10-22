@@ -1,14 +1,14 @@
 <div style='margin-left:2%'>
-<h2> Checkout </h2>
-    <ul>
+  <h2> Checkout </h2>
+  <ul>
     <% @cart.cart_items.each do |cart_item| %>
-        <% i = cart_item.item %>
-        <li>
-            <%="#{i.name}  :      £ #{i.price}"%> 
-        </li>
+    <% i = cart_item.item %>
+    <li>
+      <%="#{i.name}  :      £ #{i.price}"%> 
+    </li>
     <% end %>
     <p><%="Current total(without any calculated discounts) - £ #{@cart.total} "%></p>
-    </ul>
-    <%= link_to "Back to shop", root_path %>
-    <%= button_to "Pay and order", checkout_path(@checkout.id), method: :put %>
+  </ul>
+  <%= link_to "Back to shop", root_path %>
+  <%= button_to "Pay and order", checkout_path(@checkout.id), method: :put %>
 </div>
