@@ -5,9 +5,7 @@ class CartItemsController < ApplicationController
   before_action :find_cart_item, only: [:destroy]
 
   def create
-    # debugger
     # moving an item into the cart creates a cart_item
-    # fetch a user's last active cart or create a new one
     @cart_item = CartItem.new(item_id: item_id, cart_id: cart.id)
     if @cart_item.save
       redirect_to cart_path(@cart_item.cart)
@@ -32,6 +30,7 @@ class CartItemsController < ApplicationController
   end
 
   def cart
+    # fetch a user's last active cart or create a new one
     @cart ||= Cart.find_or_create_by(user_id: current_user.id, active: true)
   end
 end
