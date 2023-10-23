@@ -22,4 +22,21 @@ RSpec.describe Cart, type: :model do
       expect(described_class.create(user_id: nil)).not_to be_valid
     end
   end
+
+  describe '#total' do
+    let(:user) { User.create(email: 'user@email.com', password: 'password123') }
+    let(:cart) { described_class.create(user_id: user.id) }
+    let(:item) { Item.create(name: 'A new item', description: 'amazing!', price: 50) }
+    let(:cart_item_one) { CartItem.create(cart:, item:) }
+    let(:cart_item_two) { CartItem.create(cart:, item:) }
+
+    it 'calculates the total of a cart' do
+      cart_item_one
+      cart_item_two
+      expect(cart.total.to_i).to eq(100)
+      CartItem.create(cart:, item:)
+      cart.reload
+      expect(cart.total.to_i).to eq(150)
+    end
+  end
 end
