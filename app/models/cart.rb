@@ -3,6 +3,7 @@
 # carts
 # user_id     :     integer
 # active      :     boolean
+# total_price :     integer
 class Cart < ApplicationRecord
   validates :user, presence: true
 
